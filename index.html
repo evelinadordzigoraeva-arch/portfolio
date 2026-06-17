@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evelina Dordzhi-Goriaeva · Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #1A3A5C;
+    --gold:   #B8973A;
+    --stone:  #F7F5F1;
+    --ink:    #1C1C1C;
+    --mist:   #E8EDF3;
+    --gray:   #6B7280;
+    --rule:   #D4C9B8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background: var(--stone);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,245,241,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 56px;
+  }
+  .nav-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px; letter-spacing: 0.02em;
+    color: var(--navy);
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gray); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--navy); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 140px 48px 80px;
+    max-width: 900px; margin: 0 auto;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(38px, 6vw, 64px);
+    font-weight: 500; line-height: 1.1;
+    color: var(--navy); margin-bottom: 24px;
+  }
+  .hero-sub {
+    font-size: 16px; color: var(--gray);
+    max-width: 540px; line-height: 1.7; margin-bottom: 36px;
+  }
+  .hero-meta {
+    display: flex; gap: 32px; flex-wrap: wrap;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gray);
+  }
+  .hero-meta span { display: flex; align-items: center; gap: 6px; }
+  .hero-meta strong { color: var(--navy); }
+
+  /* ── SECTIONS ── */
+  section {
+    max-width: 900px; margin: 0 auto;
+    padding: 72px 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 36px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--rule);
+  }
+
+  /* ── CREDENTIALS GRID ── */
+  .credentials { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+  .card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 28px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .card:hover {
+    border-color: var(--navy);
+    box-shadow: 0 4px 20px rgba(26,58,92,0.08);
+  }
+  .card-tag {
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+  .card-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px; color: var(--navy);
+    line-height: 1.3; margin-bottom: 8px;
+  }
+  .card-org { font-size: 12px; color: var(--gray); margin-bottom: 4px; }
+  .card-date { font-size: 11px; color: var(--rule); letter-spacing: 0.06em; }
+  .card-note {
+    margin-top: 14px; padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px; color: var(--gray); line-height: 1.6;
+  }
+
+  /* verified badge */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #2D7D46; background: #EAF6EE;
+    border-radius: 2px; padding: 2px 7px; margin-top: 10px;
+  }
+
+  /* ── EXPEDITIONS ── */
+  .expeditions { display: flex; flex-direction: column; gap: 0; }
+  .expedition {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 24px; padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .expedition:last-child { border-bottom: none; }
+  .exp-year {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px; color: var(--rule);
+    padding-top: 3px;
+  }
+  .exp-content {}
+  .exp-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px; color: var(--navy); margin-bottom: 4px;
+  }
+  .exp-locations {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+  }
+  .exp-desc { font-size: 13px; color: var(--gray); line-height: 1.7; }
+  .exp-cert {
+    display: inline-block; margin-top: 12px;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--navy); border-bottom: 1px solid var(--navy);
+    text-decoration: none; padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .exp-cert:hover { color: var(--gold); border-color: var(--gold); }
+
+  /* ── MUN TABLE ── */
+  .mun-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .mun-item {
+    background: white; border: 1px solid var(--rule);
+    padding: 16px 18px; border-radius: 2px;
+  }
+  .mun-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px; color: var(--navy); margin-bottom: 2px;
+  }
+  .mun-year { font-size: 11px; color: var(--gray); }
+  .mun-topic {
+    font-size: 11px; color: var(--gold);
+    margin-top: 6px; line-height: 1.4;
+  }
+
+  /* ── CONTACT ── */
+  .contact-block {
+    display: flex; justify-content: space-between;
+    align-items: flex-start; gap: 48px; flex-wrap: wrap;
+  }
+  .contact-left h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 32px; color: var(--navy); margin-bottom: 12px;
+  }
+  .contact-left p { font-size: 14px; color: var(--gray); max-width: 360px; line-height: 1.7; }
+  .contact-right { display: flex; flex-direction: column; gap: 12px; }
+  .contact-item {
+    font-size: 13px; color: var(--ink);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .contact-label {
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); width: 60px; flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 32px 48px;
+    font-size: 11px; color: var(--rule); letter-spacing: 0.08em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero, section { padding-left: 20px; padding-right: 20px; }
+    .credentials { grid-template-columns: 1fr; }
+    .mun-grid { grid-template-columns: 1fr 1fr; }
+    .contact-block { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Evelina Dordzhi-Goriaeva</span>
+  <ul class="nav-links">
+    <li><a href="#credentials">Credentials</a></li>
+    <li><a href="#fieldwork">Fieldwork</a></li>
+    <li><a href="#mun">Model UN</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">Academic & Professional Portfolio</p>
+  <h1>Evelina<br>Dordzhi-Goriaeva</h1>
+  <p class="hero-sub">
+    Student of International Relations at MGIMO University (MFA Russia).
+    Researcher of Middle Eastern politics and energy security.
+    Participant in international field expeditions across five countries
+    and nine Model UN conferences.
+  </p>
+  <div class="hero-meta">
+    <span><strong>MGIMO University</strong> · 2025–2029</span>
+    <span><strong>Moscow</strong>, Russia</span>
+    <span><strong>9</strong> Model UN Conferences</span>
+    <span><strong>5</strong> Countries · Field Research</span>
+  </div>
+</div>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <p class="section-label">Awards & Credentials</p>
+  <div class="credentials">
+
+    <div class="card">
+      <p class="card-tag">National Competition · Winner</p>
+      <h3 class="card-title">Bolshaya Peremena — Season 5, 1st Place</h3>
+      <p class="card-org">ANO «Bolshaya Peremena» · Rosmolodezh · Russia</p>
+      <p class="card-date">2024 · MYC Artek, Crimea</p>
+      <p class="card-note">
+        Challenge: «Tell About What Matters Most» — media & communication track.
+        All-Russian competition for schoolchildren grades 8–10.
+        Signed by the First Deputy Head of the Presidential Administration of the Russian Federation.
+      </p>
+      <span class="badge">✓ Verified · Diploma No. 24-281024-0370</span>
+    </div>
+
+    <div class="card">
+      <p class="card-tag">International Youth Forum · Participant</p>
+      <h3 class="card-title">World Youth Festival 2024</h3>
+      <p class="card-org">ANO «Directorate of the World Youth Festival» · Rosmolodezh</p>
+      <p class="card-date">2024 · Sochi, Russia</p>
+      <p class="card-note">
+        Selected participant of the World Youth Festival 2024 —
+        the largest international youth forum, hosted by Russia.
+        Certificate issued by the General Director of the ANO «Directorate WYF».
+      </p>
+      <span class="badge">✓ Verified · Official Certificate</span>
+    </div>
+
+    <div class="card">
+      <p class="card-tag">International Youth Assembly · Participant</p>
+      <h3 class="card-title">WYF General Assembly 2025</h3>
+      <p class="card-org">ANO «Directorate of the World Youth Festival» · Rosmolodezh</p>
+      <p class="card-date">17–21 September 2025 · Nizhny Novgorod, Russia</p>
+      <p class="card-note">
+        Participant of the WYF General Assembly 2025 —
+        follow-up summit gathering WYF alumni and youth leaders
+        from across Russia and internationally.
+      </p>
+      <span class="badge">✓ Verified · Official Certificate</span>
+    </div>
+
+    <div class="card">
+      <p class="card-tag">National Competition · Winner → International Camp</p>
+      <h3 class="card-title">«Pervye v Sondowon» — Winner</h3>
+      <p class="card-org">All-Russian Youth Movement «Dvizhenie Pervykh»</p>
+      <p class="card-date">2024 · Sondowon International Camp, DPRK</p>
+      <p class="card-note">
+        Won a national competition granting participation in a residential shift
+        at the Sondowon International Pioneer Camp, Democratic People's Republic of Korea.
+        One of the rarest youth exchanges in contemporary Russian international practice.
+      </p>
+      <span class="badge">✓ Verified · Official Diploma</span>
+    </div>
+
+    <div class="card">
+      <p class="card-tag">Academic Competition · Prize-winner</p>
+      <h3 class="card-title">HSE Case Championship — Business Track</h3>
+      <p class="card-org">Higher School of Economics · Ministry of Economic Development RF</p>
+      <p class="card-date">2024 · Kazan, Russia · Team «Blue Chips»</p>
+      <p class="card-note">
+        Regional prize-winner in the business direction of the All-Russian
+        HSE Case Championship in Economics and Entrepreneurship.
+        Supported by Sberbank, the Russian Union of Industrialists, and the Chamber of Commerce RF.
+      </p>
+      <span class="badge">✓ Verified · Diploma No. КЧ24-9081-ДРКЧ</span>
+    </div>
+
+    <div class="card">
+      <p class="card-tag">Model UN · Delegate</p>
+      <h3 class="card-title">DILIMUN 2025</h3>
+      <p class="card-org">UWC Dilijan · Dilijan, Armenia</p>
+      <p class="card-date">21–23 March 2025</p>
+      <p class="card-note">
+        Delegate at DiliMUN 2025 hosted by United World College Dilijan.
+        Theme: «Peace and Justice: Fostering Cooperation in a Multipolar World».
+        Certificate issued by the Secretary General of DILIMUN.
+      </p>
+      <span class="badge">✓ Verified · Certificate of Participation</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- FIELDWORK -->
+<section id="fieldwork">
+  <p class="section-label">International Field Expeditions</p>
+  <p style="font-size:13px; color:var(--gray); margin-bottom:36px; max-width:560px; line-height:1.7;">
+    Three certified educational expeditions conducted in partnership with
+    International Gymnasium Skolkovo and OlimpX Travel LLC.
+    Each expedition produced a structured research output — analytical diary or report.
+    Certificates are issued officially «to the place of request» and carry
+    the director's signature and company seal.
+  </p>
+  <div class="expeditions">
+
+    <div class="expedition">
+      <div class="exp-year">2024</div>
+      <div class="exp-content">
+        <h3 class="exp-title">Expedition — UAE & Qatar</h3>
+        <p class="exp-locations">Dubai · Abu Dhabi · Doha · Ar-Rayyan · Dukhan</p>
+        <p class="exp-desc">
+          Field educational programme dedicated to the political, economic and social
+          structure of the Middle East. On-site research on Gulf state governance,
+          energy diversification (Vision 2030 / QNV 2030), and regional international relations.
+          Produced a structured research report reflecting the empirical experience
+          of interaction with foreign institutions and environments.
+        </p>
+        <span class="badge">✓ Certificate issued 16 March 2024 · Ref. No. 01-05/2024</span>
+      </div>
+    </div>
+
+    <div class="expedition">
+      <div class="exp-year">2024</div>
+      <div class="exp-content">
+        <h3 class="exp-title">Expedition — Serbia & Bosnia and Herzegovina</h3>
+        <p class="exp-locations">Belgrade · Novi Sad · Sarajevo · Mostar</p>
+        <p class="exp-desc">
+          Field programme on the political, economic and social structure of the Balkans.
+          Study of post-conflict state-building, regional political economy, and
+          cross-cultural dynamics in post-Yugoslav states.
+          Research diary produced on the basis of empirical fieldwork.
+        </p>
+        <span class="badge">✓ Certificate issued 23 November 2024 · OlimpX Travel LLC</span>
+      </div>
+    </div>
+
+    <div class="expedition">
+      <div class="exp-year">2023</div>
+      <div class="exp-content">
+        <h3 class="exp-title">Expedition — Turkey</h3>
+        <p class="exp-locations">Istanbul · Ankara · Antalya</p>
+        <p class="exp-desc">
+          Educational programme on Turkey's political, economic and social structure.
+          Investigation of Turkey's foreign policy positioning, regional influence
+          in the Middle East and Caucasus, and state-society relations.
+          Analytical diary produced reflecting intercultural interaction and regional policy.
+        </p>
+        <span class="badge">✓ Certificate issued 23 November 2024 · OlimpX Travel LLC</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MODEL UN -->
+<section id="mun">
+  <p class="section-label">Model United Nations — 9 Conferences</p>
+  <p style="font-size:13px; color:var(--gray); margin-bottom:28px; line-height:1.7; max-width:560px;">
+    Participated as delegate across 9 conferences (2022–2026).
+    Topics covered: digitalisation of states, energy security, human rights, peace and justice.
+  </p>
+  <div class="mun-grid">
+    <div class="mun-item">
+      <p class="mun-name">DILIMUN</p>
+      <p class="mun-year">2025 · UWC Dilijan, Armenia</p>
+      <p class="mun-topic">Peace & Justice: Cooperation in a Multipolar World</p>
+    </div>
+    <div class="mun-item">
+      <p class="mun-name">HSEMUN</p>
+      <p class="mun-year">2022 · 2023 · 2024</p>
+      <p class="mun-topic">Energy security · Human rights · Digitalisation</p>
+    </div>
+    <div class="mun-item">
+      <p class="mun-name">C-MIMUN</p>
+      <p class="mun-year">2022 · 2023 · 2024</p>
+      <p class="mun-topic">Digitalisation of states · Economic development</p>
+    </div>
+    <div class="mun-item">
+      <p class="mun-name">KUMUN</p>
+      <p class="mun-year">2023</p>
+      <p class="mun-topic">Human rights · International security</p>
+    </div>
+    <div class="mun-item">
+      <p class="mun-name">IMUNMT</p>
+      <p class="mun-year">2026</p>
+      <p class="mun-topic">—</p>
+    </div>
+    <div class="mun-item" style="background:var(--mist); border-color:var(--mist); display:flex; align-items:center; justify-content:center;">
+      <p style="font-family:'EB Garamond',serif; font-size:28px; color:var(--rule); text-align:center; line-height:1;">9<br><span style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gray);">conferences</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-block">
+    <div class="contact-left">
+      <h2>Get in touch</h2>
+      <p>Open to internship opportunities, academic programmes, and international exchanges in the field of International Relations and Middle Eastern studies.</p>
+    </div>
+    <div class="contact-right">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span>evelinadordzigoraeva@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Phone</span>
+        <span>+7 961 545-90-17</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <span>Moscow, Russian Federation</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">University</span>
+        <span>MGIMO University · 2025–2029</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Evelina Dordzhi-Goriaeva · Portfolio · 2025
+</footer>
+
+</body>
+</html>
